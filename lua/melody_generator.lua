@@ -18,3 +18,17 @@ local rhythms = { -- in whole notes
 
 local n_notes = 1000
 
+local function TableCopy(t) 
+    local t2 = {}
+    for k, v in pairs(t) do
+        t2[k] = v
+    end
+    return t2
+end
+
+----------------------------
+local proj = 0
+local midi_editor = reaper.midi_editor_get_active()
+
+local take = reaper.midi_editor_EnumTakes(midi_editor, 0, true)
+

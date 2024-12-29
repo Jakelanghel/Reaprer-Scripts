@@ -1,7 +1,7 @@
 -- Function to print the data from the MIDI input event
 local function printMIDIData()
     -- Get the most recent MIDI input event
-    local retval, _, _, msg, _, _, _ = reaper.MIDI_GetRecentInputEvent(0)
+    local retval, buf, _, msg, _, _, _ = reaper.MIDI_GetRecentInputEvent(0)
 
     -- Check if a valid MIDI event is retrieved
     if retval and msg then
@@ -9,6 +9,7 @@ local function printMIDIData()
         reaper.ShowConsoleMsg("MIDI event data: \n")
         reaper.ShowConsoleMsg("retval: " .. tostring(retval) .. "\n")
         reaper.ShowConsoleMsg("Message (msg): " .. tostring(msg) .. "\n")
+        reaper.ShowConsoleMsg("Buf (string): " .. tostring(buf) .. "\n")
     else
         -- Print message if no MIDI event is detected
         reaper.ShowConsoleMsg("No MIDI event detected.\n")
